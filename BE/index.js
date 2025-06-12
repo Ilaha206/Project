@@ -1,25 +1,34 @@
 import express from "express"
 import mongoose from "mongoose"
+import cors from "cors";
 import './config/config.js'
 const app = express()
 const port = 3000
 
+app.use(express.json())
+app.use(cors())
 
 const productSchema = new mongoose.Schema({
   image: String,
   title: String,
   description: String,
   contact: {
-    phone: { type: String },
-    instagram: { type: String }
+    phone: {
+      type: String,
+      required: false // istəyə bağlıdır
+    },
+    instagram: {
+      type: String,
+      required: false // istəyə bağlıdır
+    }
   },
-  price: Number,
+  price: Number
 
 });
 
 const productModel = mongoose.model('Product', productSchema);
 
-app.get('/', async (req, res) => {
+app.get('/products', async (req, res) => {
   try {
     const gifts = await productModel.find({})
     res.send(gifts)
@@ -29,7 +38,7 @@ app.get('/', async (req, res) => {
 
 })
 
-app.get('/:id', async (req, res) => {
+app.get('/products/:id', async (req, res) => {
   try {
     const { id } = req.params
     const gifts = await productModel.findById(id)
@@ -41,7 +50,7 @@ app.get('/:id', async (req, res) => {
 })
 
 
-app.post('/', async (req, res) => {
+app.post('/products', async (req, res) => {
   try {
     const { body } = req.body
     const gifts =  productModel(req.body)
@@ -53,7 +62,7 @@ app.post('/', async (req, res) => {
 })
 
 
-app.put('/:id', async (req, res) => {
+app.put('/products/:id', async (req, res) => {
   try {
     const { id } = req.params
     const gifts = await productModel.findByIdAndUpdate(id,req.body)
@@ -64,7 +73,7 @@ app.put('/:id', async (req, res) => {
 })
 
 
-app.delete('/user', async (req, res) => {
+app.delete('/products/:id', async (req, res) => {
   try {
     const { id } = req.params
     const gifts = await productModel.findByIdAndDelete(id,req.body)
