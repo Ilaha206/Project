@@ -1,11 +1,14 @@
 import mongoose, { Schema } from "mongoose";
 
 const userSchema = new mongoose.Schema({
-    name: String,
-    title: String,
-    description: String,
-    price: Number
+    username: String,
+    role: {
+        type:String,
+        default:'user'
+    },
+    password: String,
+    email: String
 
 });
 
-export const usertModel = mongoose.model('User', userSchema);
+export const userModel = mongoose.model('User', userSchema);
