@@ -3,6 +3,7 @@ import cors from "cors";
 import './src/config/config.js'
 import { giftRouter } from "./src/routers/giftRouter.js";
 import { userRouter } from "./src/routers/userRouter.js";
+import 'dotenv/config'
 const app = express()
 const port = 3000
 
