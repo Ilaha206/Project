@@ -14,8 +14,8 @@ export const getAllGifts =  async (req, res) => {
 export const getByIdGifts = async (req, res) => {
   try {
     const { id } = req.params
-    const gifts = await productModel.findById(id)
-    res.send(gifts)
+    const gift = await productModel.findById(id)
+    res.send(gift)
   } catch (error) {
     res.send(error.message)
   }
@@ -25,9 +25,9 @@ export const getByIdGifts = async (req, res) => {
 
 export const createGifts = async (req, res) => {
   try {
-    const gifts =  productModel(req.body)
-    await gifts.save()
-    res.send(gifts)
+    const newGift = new productModel(req.body)
+    await newGift.save()
+    res.send(newGift)
   } catch (error) {
     res.send(error.message)
   }
@@ -37,8 +37,8 @@ export const createGifts = async (req, res) => {
 export const updateByIdGifts = async (req, res) => {
   try {
     const { id } = req.params
-    const gifts = await productModel.findByIdAndUpdate(id,req.body)
-    res.send(gifts)
+    const gift = await productModel.findByIdAndUpdate(id,req.body)
+    res.send(gift)
   } catch (error) {
     res.send(error.message)
   }
@@ -47,10 +47,10 @@ export const updateByIdGifts = async (req, res) => {
 
 export const deleteByIdGifts = async (req, res) => {
   try {
-    const { id } = req.params
-    const gifts = await productModel.findByIdAndDelete(id,req.body)
-    res.send(gifts)
+    const { id } = req.params;
+    await productModel.findByIdAndDelete(id);
+    res.send("Deleted");
   } catch (error) {
-    res.send(error.message)
+    res.send(error.message);
   }
-}
+};

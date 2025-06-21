@@ -2,10 +2,10 @@ import { Router } from "express"
 import { createGifts, deleteByIdGifts, getAllGifts, getByIdGifts, updateByIdGifts } from "../controllers/giftController.js"
 
 
-const giftRouter = Router()
+export const giftRouter = Router()
 
-giftRouter.get('/products', getAllGifts )
-giftRouter.get('/products/:id', getByIdGifts )
-giftRouter.post('/products', createGifts )
-giftRouter.put('/products/:id',updateByIdGifts )
-giftRouter.delete('/products/:id', deleteByIdGifts)
+giftRouter.get('/', getAllGifts )
+giftRouter.get('/:id', getByIdGifts )
+giftRouter.post('/', createGifts )
+giftRouter.put('/:id',updateByIdGifts )
+giftRouter.delete('/:id', deleteByIdGifts)
