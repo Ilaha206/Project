@@ -23,7 +23,7 @@ export const registerController = async (req, res) => {
     try {
         const { username, password, email } = req.body
         const newUser = new userModel(req.body)
-        const token = jwt.sign({ username: username, role: "user" }, process.env.JWT_KEY);
+        const token = jwt.sign({ username: username, role: "user" }, process.env.JWT_KEY,{expiresIn:"1h"});
         await newUser.save()
         res.send(token)
     } catch (error) {
