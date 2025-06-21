@@ -11,7 +11,7 @@ export const getAllUsers = async (req, res) => {
 
 }
 
-export const getByIdUser = async (req, res) => {
+export const getByIdUsers = async (req, res) => {
     try {
         const { id } = req.params
         const user = await userModel.findById(id)
