@@ -52,7 +52,7 @@ app.get('/products/:id', async (req, res) => {
 
 app.post('/products', async (req, res) => {
   try {
-    const { body } = req.body
+    
     const gifts =  productModel(req.body)
     await gifts.save()
     res.send(gifts)
