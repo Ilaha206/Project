@@ -1,7 +1,7 @@
 import { userModel } from "../models/userModel.js"
 
 
-export const getAllUsers = async (req, res) => {
+export const getAllUser = async (req, res) => {
     try {
         const user = await userModel.find({})
         res.send(user)
@@ -11,7 +11,7 @@ export const getAllUsers = async (req, res) => {
 
 }
 
-export const getByIdUsers = async (req, res) => {
+export const getByIdUser = async (req, res) => {
     try {
         const { id } = req.params
         const user = await userModel.findById(id)
@@ -23,18 +23,18 @@ export const getByIdUsers = async (req, res) => {
 }
 
 
-export const createUsers = async (req, res) => {
+export const createUser = async (req, res) => {
     try {
         const newUser = new userModel(req.body)
         await newUser.save()
-        res.send(newGift)
+        res.send(newUser)
     } catch (error) {
         res.send(error.message)
     }
 }
 
 
-export const updateByIdUsers = async (req, res) => {
+export const updateByIdUser = async (req, res) => {
     try {
         const { id } = req.params
         const user = await userModel.findByIdAndUpdate(id, req.body)
@@ -45,7 +45,7 @@ export const updateByIdUsers = async (req, res) => {
 }
 
 
-export const deleteByIdUsers = async (req, res) => {
+export const deleteByIdUser = async (req, res) => {
     try {
         const { id } = req.params;
         await userModel.findByIdAndDelete(id);

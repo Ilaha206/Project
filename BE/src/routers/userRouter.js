@@ -1,11 +1,11 @@
 import { Router } from "express"
-import { createUsers, deleteByIdUsers, getAllUsers, getByIdUsers, updateByIdUsers } from "../controllers/userController.js"
+import { createUser, deleteByIdUser, getAllUser, getByIdUser, updateByIdUser } from "../controllers/userController.js"
 
 
 export const userRouter = Router()
 
-userRouter.get('/', getAllUsers)
-.get('/:id', getByIdUsers)
-.post('/', createUsers)
-.put('/:id', updateByIdUsers)
-.delete('/:id', deleteByIdUsers)
+userRouter.get('/', getAllUser)
+    .get('/:id', getByIdUser)
+    .post('/', createUser)
+    .put('/:id', updateByIdUser)
+    .delete('/:id', deleteByIdUser)
