@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken"
 
-export const verifyAccess = function (req, res, next) {
+export const verifyAccess = function (roles) {
+    return function (req, res, next) {
 try {
         let token = req.headers.authorization
     if (!token) {
@@ -11,9 +12,13 @@ try {
     }
     token = token.slice(7)
     const decoded = jwt.verify(token,process.env.JWT_KEY)
+    if (!roles.includes(decoded.role)) {
+        return res.status(403).send("Not authorized you don't have access")
+    }
   console.log(decoded)
   next()
 } catch (error) {
     res.send(error.message)
+}
 }
 }
