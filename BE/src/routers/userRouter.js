@@ -2,7 +2,6 @@ import { Router } from "express"
 import { createUser, deleteByIdUser, getAllUser, getByIdUser, updateByIdUser } from "../controllers/userController.js"
 import { verifyAccess } from "../middleware/authMiddleware.js"
 
-
 export const userRouter = Router()
 
 userRouter.get('/',verifyAccess(["admin"]), getAllUser)
