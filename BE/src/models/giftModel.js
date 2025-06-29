@@ -14,8 +14,12 @@ const productSchema = new mongoose.Schema({
             required: false // istəyə bağlıdır
         }
     },
-    price: Number
-
+    price: Number,
+categoryId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Category", // əlaqə qurulan model adı
+    required: true
+  }
 });
 
 export const productModel = mongoose.model('Product', productSchema);

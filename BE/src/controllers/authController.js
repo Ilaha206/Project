@@ -10,9 +10,10 @@ export const loginController = async (req, res) => {
         if (!user) {
             return res.send("User not found")
         }
-        if (user.password !== password) {
-            return res.send("Wrong password")
-        }
+const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return res.send("Wrong password");
+    }
         const token = jwt.sign({ email: user.email, role: user.role }, process.env.JWT_KEY, { expiresIn: "1h" });
         res.send(token)
     } catch (error) {
