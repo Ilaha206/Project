@@ -1,0 +1,25 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    background-color: rgb(2, 33, 94);
+}
+
+
+
+.options ul {
+    display: flex;
+    gap: 200px;
+    
+}
+
+a {
+    text-decoration: none;
+    color:white
+}
+
+li {
+    list-style-type: none;
+}
+
