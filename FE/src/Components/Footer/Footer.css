@@ -1,0 +1,19 @@
+.footer_section {
+    background-color: rgb(2, 33, 94);
+    text-align: center;
+}
+
+.phone_number {
+    color: white;
+}
+
+h2 {
+    color: white;
+}
+
+.footer_icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
