@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import './Home.css'
+import { Link } from "react-router"
+import { FaInfoCircle } from "react-icons/fa"
 
 function Home() {
   const [products, setproducts] = useState([])
@@ -27,7 +29,7 @@ function Home() {
                                 <p className="price">{x.price} AZN</p>
                             </div>
                             <div className="card_icons">
-                                
+                                <Link to={`detail/${x._id}`}><a className="info"><FaInfoCircle /></a></Link>
                                 
                                
                             </div>

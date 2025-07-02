@@ -1,0 +1,27 @@
+.detail_card {
+    border: 5px solid orange;
+    border-radius: 10px;
+    width: 40%;
+}
+
+.detail_card img {
+    border-radius: 5px;
+    width: 100%;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 5px 0;
+    text-align: center;
+}
+.description{
+    font-size: 20px;
+    text-align: center;
+}
+.price {
+    font-size: 20px;
+    color: #333;
+    margin: 0;
+    text-align: center;
+}
