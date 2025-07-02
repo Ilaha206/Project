@@ -34,7 +34,9 @@
     padding: 10px 0;
 
 }
-
+.card_text{
+    padding: 5px;
+}
 .title {
     font-size: 24px;
     font-weight: bold;
@@ -48,7 +50,16 @@
     margin: 0;
     text-align: center;
 }
-
+.phone{
+    text-align: center;
+    font-size: 18px;
+}
+.icon_instagram{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
 .card_icons {
     display: flex;
     align-items: center;
