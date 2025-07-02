@@ -8,11 +8,11 @@ export const loginController = async (req, res) => {
         const { password, email } = req.body
         const user = await userModel.findOne({ email })
         if (!user) {
-            return res.send("User not found")
+           return res.status(401).json({ message: "Email və ya şifrə yanlışdır" });
         }
 const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      return res.send("Wrong password");
+       return res.status(401).json({ message: "Email və ya şifrə yanlışdır" });
     }
         const token = jwt.sign({ email: user.email, role: user.role }, process.env.JWT_KEY, { expiresIn: "1h" });
         res.send(token)

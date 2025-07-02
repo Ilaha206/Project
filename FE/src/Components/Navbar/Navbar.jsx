@@ -11,7 +11,8 @@ function Navbar() {
                         <ul>
                             <li><Link to="">Home</Link></li>
                             <li><Link to="wishlist">Favorite</Link></li>
-                            <li><Link to="profil">Profil</Link></li>
+                            <li><Link to="login">Login</Link></li>
+                            <li><Link to="registration">Registration</Link></li>
                         </ul>
                     </div>
 

@@ -1,13 +1,23 @@
+import { useEffect, useState } from "react"
+import './Admin.css'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from "axios"
-import { useNavigate } from 'react-router';
-function AdminAdd() {
-  const navigate = useNavigate()
+import { useParams } from "react-router";
+
+function AdminUpdate() {
+  const [products, setproducts] = useState()
+  const {id} = useParams()
+  useEffect(() => {
+    fetch("http://localhost:3000/gifts/"+id)
+      .then((res) => (res.json()))
+      .then((data) => (setproducts(data)))
+  }, [id])
+
+  
   return (
     <>
-      <title>AdminAdd</title>
-      <Formik
+     {product &&  <Formik
         initialValues={{
           image: '',
           title: '',
@@ -50,7 +60,7 @@ function AdminAdd() {
         })}
 
         onSubmit={(values) => {
-          axios.post("http://localhost:3000/gifts", values)
+          axios.put("http://localhost:3000/gifts/"+id, values)
             .then(() => navigate("/admin"))
             .catch((err) => console.error(err));
         }}
@@ -87,9 +97,11 @@ function AdminAdd() {
 
           <button type="submit">Add</button>
         </Form>
-      </Formik>
+      </Formik>}
+
+      
     </>
   )
 }
 
-export default AdminAdd
+export default AdminUpdate

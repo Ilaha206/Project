@@ -2,9 +2,11 @@ import { useEffect, useState } from "react"
 import './Admin.css'
 import { IoLogoInstagram } from "react-icons/io5"
 import { CiSearch } from "react-icons/ci";
+import { useNavigate } from "react-router";
 
 function Admin() {
   const [products, setproducts] = useState([])
+  const navigate = useNavigate()
   const [search, setsearch] = useState("")
   const [sortProperty, setsortProperty] = useState({
     title: "",
@@ -60,7 +62,7 @@ function Admin() {
                   <td className="icon_instagram"><IoLogoInstagram />: {x.contact.instagram}</td>
                 )}
                 <td><button className="delete" onClick={() => deleteByItem(x._id)}>Delete</button></td>
-                <td><button className="update">Update</button></td>
+                <td><button className="update" onClick={()=>navigate("update/"+x._id)}>Update</button></td>
               </tr>
             </tbody>)}
       </table>
