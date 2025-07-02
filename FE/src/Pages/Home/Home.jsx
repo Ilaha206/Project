@@ -1,8 +1,41 @@
-import React from 'react'
+import { useEffect, useState } from "react"
+import './Home.css'
 
 function Home() {
+  const [products, setproducts] = useState([])
+
+    useEffect(() => {
+        fetch("http://localhost:3000/gifts")
+            .then((res) => (res.json()))
+            .then((data) => (setproducts(data)))
+    }, [])
   return (
-    <div>Home</div>
+    <>
+    <title>Home</title>
+
+            <div className="products_cards">
+                <div className="products">
+                    <h3>Məhsullar</h3>
+                    
+                </div>
+                <div className="cards">{products.map((x) =>
+                    <div className="card" key={x._id} >
+                        <div><img src={x.image} alt="" /></div>
+                        <div className="card_footer">
+                            <div className="card_text">
+                                <p className="title">{x.title}</p>
+                                <p className="price">{x.price} AZN</p>
+                            </div>
+                            <div className="card_icons">
+                                
+                                
+                               
+                            </div>
+                        </div>
+                    </div>)}
+                </div>
+            </div>
+    </>
   )
 }
 

@@ -1,19 +1,33 @@
 .footer_section {
     background-color: rgb(2, 33, 94);
-    text-align: center;
+    margin-top: 20px;
 }
-
-.phone_number {
-    color: white;
+.contact{
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
 }
-
 h2 {
     color: white;
+    padding: 5px;
 }
-
 .footer_icons {
+    gap: 40px;
+}
+.phone_number {
+    color: white;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 40px;
+    padding: 5px;
+}
+.icons{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 20px;
 }
