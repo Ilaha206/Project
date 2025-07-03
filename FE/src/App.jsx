@@ -9,10 +9,11 @@ import Registration from "./Pages/Registration/Registration";
 import AdminLayout from "./AdminLayout";
 import Admin from "./Pages/Admin/Admin";
 import AdminAdd from "./Pages/AdminAdd/AdminAdd";
+
 import './App.css'
+import AdminUpdate from "./Pages/AdminUpdate/AdminUpdate";
 
 function App() {
-
 
   return (
     <>
@@ -27,8 +28,8 @@ function App() {
             <Route path="registration" element={<Registration />} />
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<Admin />} />
-            <Route path="adminadd" element={<AdminAdd />} />
-            <Route path="update/:id" element={<AdminAdd />} />
+            <Route path="/admin/adminadd" element={<AdminAdd />} />
+            <Route path="update/:id" element={<AdminUpdate />} />
           </Route>
           <Route path="*" element={<NoPage />} />
         </Routes>

@@ -5,13 +5,19 @@ import { FaHeart, FaInfoCircle, FaRegHeart } from "react-icons/fa"
 import { IoLogoInstagram } from "react-icons/io5";
 import { WishlistContext } from "../../Context/WishlistProvider"
 
+
 function Home() {
   const [products, setproducts] = useState([])
   const { handleWishlist, checkAtWishlist } = useContext(WishlistContext)
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     fetch("http://localhost:3000/gifts")
       .then((res) => (res.json()))
-      .then((data) => (setproducts(data)))
+      .then((data) => {
+        setproducts(data)
+      setLoading(false);
+      })
   }, [])
   return (
     <>
@@ -20,9 +26,8 @@ function Home() {
       <div className="products_cards">
         <div className="products">
           <h3>Məhsullar</h3>
-
         </div>
-        <div className="cards">{products.map((x) =>
+        {loading ? <div className="loading">Yüklənir...</div>:        <div className="cards">{products.map((x) =>
           <div className="card" key={x._id} >
             <div><img src={x.image} alt="" /></div>
             <div className="card_footer">
@@ -41,7 +46,8 @@ function Home() {
               </div>
             </div>
           </div>)}
-        </div>
+        </div>}
+
       </div>
     </>
   )

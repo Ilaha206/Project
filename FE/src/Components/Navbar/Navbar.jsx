@@ -3,6 +3,9 @@ import "./Navbar.css"
 
 
 function Navbar() {
+
+
+
     return (
         <>
             <nav>
@@ -16,9 +19,9 @@ function Navbar() {
                         </ul>
                     </div>
 
-                    <div className="icons">
 
-                    </div>
+
+                    
 
                 </div>
             </nav>

@@ -14,7 +14,7 @@ const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
        return res.status(401).json({ message: "Email və ya şifrə yanlışdır" });
     }
-        const token = jwt.sign({ email: user.email, role: user.role }, process.env.JWT_KEY, { expiresIn: "1h" });
+        const token = jwt.sign({ email: user.email, role: user.role }, process.env.JWT_KEY);
         res.send(token)
     } catch (error) {
         res.send(error.message)
@@ -31,7 +31,7 @@ export const registerController = async (req, res) => {
             role: "user"
         });
         await newUser.save()
-        const token = jwt.sign({ username: username, role: "user" }, process.env.JWT_KEY, { expiresIn: "1h" });
+        const token = jwt.sign({ username: username, role: "user" }, process.env.JWT_KEY);
         res.send(token)
     } catch (error) {
         res.send(error.message)

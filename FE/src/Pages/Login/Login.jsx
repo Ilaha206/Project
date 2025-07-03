@@ -2,13 +2,15 @@ import axios from 'axios';
 import "../Login/Login.css"
 import { useState } from 'react';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { useNavigate } from 'react-router';
 
 function Login() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
-const [showPassword, setShowPassword] = useState(false); 
+  const [showPassword, setShowPassword] = useState(false);
   const handleChange = (e) => {
     setFormData(prev => ({
       ...prev,
@@ -21,30 +23,36 @@ const [showPassword, setShowPassword] = useState(false);
 
     try {
       const res = await axios.post('http://localhost:3000/login', formData);
-      const token = res.data.token;
-      localStorage.setItem('token', token);
-      alert('Uğurla daxil oldunuz!');
-      // buradan sonra istədiyiniz səhifəyə yönləndirə bilərsiniz
+      console.log('Backend response:', res.data);
+      const token = res.data;
+
+      if (token) {
+        localStorage.setItem('token', token);
+        alert('Uğurla daxil oldunuz!');
+        navigate('/admin'); // girişdən sonra admin panelə yönləndir
+      } else {
+        alert('Token alınmadı!');
+      }
     } catch (err) {
-    if (err.response && err.response.status === 401) {
-      alert('Email və ya şifrə yanlışdır!');
-    } else {
-      alert('Server xətası baş verdi!');
+      if (err.response && err.response.status === 401) {
+        alert('Email və ya şifrə yanlışdır!');
+      } else {
+        alert('Server xətası baş verdi!');
+      }
+      console.error(err);
     }
-    console.error(err);
-  }
   };
   return (
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
         <h4>Daxil ol</h4>
-        <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required/>
+        <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
         <div className="password-field">
-        <input type= "password" name="password" placeholder="Şifrə"  value={formData.password} onChange={handleChange} required/>
+          <input type={showPassword ? "text" : "password"} name="password" placeholder="Şifrə" value={formData.password} onChange={handleChange} required />
           <div type="button" className="toggle-password" onClick={() => setShowPassword(prev => !prev)}>
             {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
           </div>
-</div>
+        </div>
         <button type="submit">Giriş</button>
       </form>
     </div>

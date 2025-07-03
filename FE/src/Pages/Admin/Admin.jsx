@@ -19,11 +19,31 @@ function Admin() {
   }, [])
 
   function deleteByItem(id) {
-    fetch("http://localhost:3000/gifts/" + id, { method: "DELETE" })
-      .then((res) => (res.json()))
-      .then(() => (fetch("http://localhost:3000/gifts")
-        .then((res) => (res.json()))
-        .then((data) => (setproducts(data)))))
+     const token = localStorage.getItem('token');
+
+    
+  fetch("http://localhost:3000/gifts/" + id, {
+    method: "DELETE",
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(res => {
+    if (!res.ok) {
+      throw new Error('Delete əməliyyatı uğursuz oldu');
+    }
+    return res.text();
+  })
+  .then(() => {
+    return fetch("http://localhost:3000/gifts")
+  })
+  .then(res => res.json())
+  .then(data => setproducts(data))
+  .catch(err => {
+    console.error(err);
+    alert('Silərkən xəta baş verdi!');
+  });
   }
   return (
     <>

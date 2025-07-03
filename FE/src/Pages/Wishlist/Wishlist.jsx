@@ -10,7 +10,8 @@ function Wishlist() {
   return (
     <>
       <title>Favorite</title>
-      <h3 className='icon_smile'>Burada sizin sevimli məhsullarınız görünəcək. Əgər heç bir məhsul yoxdursa sevimli məhsullarınızı indidən seçməyə başlayın <FaRegSmileBeam /></h3>
+      <div className='wishlist_page'>
+<h3 className='icon_smile'>Burada sizin sevimli məhsullarınız görünəcək. Əgər heç bir məhsul yoxdursa sevimli məhsullarınızı indidən seçməyə başlayın <FaRegSmileBeam /></h3>
       <div className="cards">{wishlist.map((x) =>
         <div className="card" key={x._id}>
           <img src={x.image} alt="" />
@@ -27,6 +28,7 @@ function Wishlist() {
 
           </div>
         </div>)}
+      </div>
       </div>
     </>
   )

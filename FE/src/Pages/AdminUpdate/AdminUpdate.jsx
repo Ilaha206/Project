@@ -1,34 +1,38 @@
-import { useEffect, useState } from "react"
-import './Admin.css'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from "axios"
-import { useParams } from "react-router";
-
+import { useNavigate, useParams } from 'react-router';
+import { useEffect, useState } from 'react';
 function AdminUpdate() {
-  const [products, setproducts] = useState()
-  const {id} = useParams()
-  useEffect(() => {
-    fetch("http://localhost:3000/gifts/"+id)
-      .then((res) => (res.json()))
-      .then((data) => (setproducts(data)))
-  }, [id])
+  const { id } = useParams();
+  const navigate = useNavigate()
+    const [product, setProduct] = useState(null);
 
-  
+    useEffect(() => {
+    axios.get(`http://localhost:3000/gifts/${id}`)
+      .then(res => setProduct(res.data))
+      .catch(err => {
+        console.error("Məhsul yüklənmədi:", err);
+        alert("Məhsul tapılmadı və ya server xətası.");
+        navigate('/admin');
+      });
+  }, [id, navigate]);
+
   return (
     <>
-     {product &&  <Formik
+      {product && <Formik
         initialValues={{
-          image: '',
-          title: '',
-          description: '',
-          price: '',
-          categoryId: '',
+          image: product.image,
+          title: product.title,
+          description: product.description,
+          price: product.price,
+          categoryId: product.categoryId,
           contact: {
-            phone: '',
-            instagram: ''
+            phone:  product.contact?.phone,
+            instagram: product.contact?.instagram
           }
         }}
+
         validationSchema={Yup.object({
           image: Yup.string()
             .url('URL formatı düzgün deyil')
@@ -59,10 +63,24 @@ function AdminUpdate() {
           }).optional()
         })}
 
-        onSubmit={(values) => {
-          axios.put("http://localhost:3000/gifts/"+id, values)
-            .then(() => navigate("/admin"))
-            .catch((err) => console.error(err));
+        onSubmit={async (values, { setSubmitting }) => {
+          const token = localStorage.getItem('token');
+          try {
+            await axios.put(`http://localhost:3000/gifts/${id}`, values, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json'
+              }
+            });
+            
+            alert('Məhsul uğurla yeniləndi!');
+            navigate('/admin');
+          } catch (err) {
+            console.error('Yeniləmə xətası:', err);
+            alert('Xəta baş verdi! Token düzgün deyil və ya icazən yoxdur.');
+          }
+
+          setSubmitting(false);
         }}
       >
         <Form>
@@ -82,9 +100,16 @@ function AdminUpdate() {
           <Field name="price" type="text" />
           <ErrorMessage name="price" />
 
-          <label htmlFor="categoryId">Category ID</label>
-          <Field name="categoryId" type="text" />
-          <ErrorMessage name="categoryId" />
+          <label htmlFor="categoryId">Kateqoriya</label>
+          <Field as="select" name="categoryId">
+            <option value="">Kateqoriya seçin</option>
+            <option value="6861b1a49a85477b889bd5e5">Çanta</option>
+            <option value="6864610cfac8cad88f5347d5">Oyuncaq</option>
+            <option value="68645bf4fac8cad88f5347ba">Eynək</option>
+            <option value="68646605fac8cad88f5347e6">Aksesuar</option>
+            <option value="68646892fac8cad88f5347f3">Buket</option>
+          </Field>
+          <ErrorMessage name="categoryId" component="div" className="error" />
 
           <h4>Contact</h4>
           <label htmlFor="contact.phone">Phone</label>
@@ -95,10 +120,9 @@ function AdminUpdate() {
           <Field name="contact.instagram" type="text" />
           <ErrorMessage name="contact.instagram" />
 
-          <button type="submit">Add</button>
+          <button type="submit">Submit</button>
         </Form>
-      </Formik>}
-
+      </Formik> }
       
     </>
   )

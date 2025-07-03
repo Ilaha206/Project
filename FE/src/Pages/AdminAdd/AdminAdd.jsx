@@ -49,10 +49,26 @@ function AdminAdd() {
           }).optional()
         })}
 
-        onSubmit={(values) => {
-          axios.post("http://localhost:3000/gifts", values)
-            .then(() => navigate("/admin"))
-            .catch((err) => console.error(err));
+        onSubmit={async (values, { setSubmitting }) => {
+          const token = localStorage.getItem('token');
+            console.log("Sending POST, token:", token, "values:", values);
+
+          try {
+            await axios.post('http://localhost:3000/gifts', values, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json'
+              }
+            });
+
+            alert('Əlavə olundu!');
+            navigate('/admin');
+          } catch (err) {
+            console.error('Əlavə xətası:', err);
+            alert('Xəta baş verdi! Token düzgün deyil və ya icazən yoxdur.');
+          }
+
+          setSubmitting(false);
         }}
       >
         <Form>
@@ -72,9 +88,16 @@ function AdminAdd() {
           <Field name="price" type="text" />
           <ErrorMessage name="price" />
 
-          <label htmlFor="categoryId">Category ID</label>
-          <Field name="categoryId" type="text" />
-          <ErrorMessage name="categoryId" />
+          <label htmlFor="categoryId">Kateqoriya</label>
+          <Field as="select" name="categoryId">
+            <option value="">Kateqoriya seçin</option>
+            <option value="6861b1a49a85477b889bd5e5">Çanta</option>
+            <option value="6864610cfac8cad88f5347d5">Oyuncaq</option>
+            <option value="68645bf4fac8cad88f5347ba">Eynək</option>
+            <option value="68646605fac8cad88f5347e6">Aksesuar</option>
+            <option value="68646892fac8cad88f5347f3">Buket</option>
+          </Field>
+          <ErrorMessage name="categoryId" component="div" className="error" />
 
           <h4>Contact</h4>
           <label htmlFor="contact.phone">Phone</label>
@@ -85,7 +108,7 @@ function AdminAdd() {
           <Field name="contact.instagram" type="text" />
           <ErrorMessage name="contact.instagram" />
 
-          <button type="submit">Add</button>
+          <button type="submit">Submit</button>
         </Form>
       </Formik>
     </>
