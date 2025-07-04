@@ -27,3 +27,29 @@
     margin: 0;
     text-align: center;
 }
+
+/* ✅ Mobil görünüş */
+@media (max-width: 600px) {
+  .detail_card {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .description,
+  .price,
+  .phone,
+  .icon_instagram {
+    font-size: 16px;
+  }
+}
+
+/* ✅ Tablet görünüş */
+@media (min-width: 601px) and (max-width: 900px) {
+  .detail_card {
+    width: 70%;
+  }
+}
