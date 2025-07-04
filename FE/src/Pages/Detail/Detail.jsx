@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import "../Detail/Detail.css"
+import "./Detail.css"
 import { FaInstagram } from 'react-icons/fa'
 import { IoLogoInstagram } from 'react-icons/io5'
 function Detail() {

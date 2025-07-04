@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import axios from "axios"
 import { useNavigate, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
+import "./AdminUpdate.css"
 function AdminUpdate() {
   const { id } = useParams();
   const navigate = useNavigate()

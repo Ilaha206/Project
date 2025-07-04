@@ -1,0 +1,73 @@
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input,
+select,
+textarea {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    padding: 12px;
+    background-color: rgb(2, 33, 94);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #041c4d;
+}
+
+.error,
+div[role="alert"] {
+    color: red;
+    font-size: 14px;
+}
+
+/* Mobil */
+@media (max-width: 600px) {
+    form {
+        padding: 15px;
+    }
+
+    input,
+    select,
+    textarea {
+        font-size: 15px;
+    }
+
+    button[type="submit"] {
+        font-size: 15px;
+        padding: 10px;
+    }
+}
+
+/* Planşet */
+@media (min-width: 601px) and (max-width: 900px) {
+    form {
+        padding: 20px;
+        max-width: 90%;
+    }
+}
