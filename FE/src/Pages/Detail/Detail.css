@@ -28,28 +28,28 @@
     text-align: center;
 }
 
-/* ✅ Mobil görünüş */
+/*  Mobil görünüş */
 @media (max-width: 600px) {
-  .detail_card {
-    width: 90%;
-    padding: 15px;
-  }
+    .detail_card {
+        width: 90%;
+        padding: 15px;
+    }
 
-  .title {
-    font-size: 20px;
-  }
+    .title {
+        font-size: 20px;
+    }
 
-  .description,
-  .price,
-  .phone,
-  .icon_instagram {
-    font-size: 16px;
-  }
+    .description,
+    .price,
+    .phone,
+    .icon_instagram {
+        font-size: 16px;
+    }
 }
 
-/* ✅ Tablet görünüş */
+/*  Tablet görünüş */
 @media (min-width: 601px) and (max-width: 900px) {
-  .detail_card {
-    width: 70%;
-  }
+    .detail_card {
+        width: 70%;
+    }
 }

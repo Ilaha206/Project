@@ -1,9 +1,9 @@
 .footer_section {
-  background-color: rgb(2, 33, 94);
-  padding: 1rem;
-  margin: 0;
-  width: 100%;
-  box-sizing: border-box;
+    background-color: rgb(2, 33, 94);
+    padding: 1rem;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 
@@ -44,36 +44,36 @@ h2 {
 
 /* Mobil cihazlar (<=600px) üçün */
 @media (max-width: 600px) {
-  .footer_section {
-    padding: 15px;
-    text-align: center;
-  }
+    .footer_section {
+        padding: 15px;
+        text-align: center;
+    }
 
-  .footer_icons {
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
-  }
+    .footer_icons {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
 
-  .phone_number,
-  .icons {
-    font-size: 16px;
-  }
+    .phone_number,
+    .icons {
+        font-size: 16px;
+    }
 
-  .icons {
-    gap: 15px;
-    font-size: 20px;
-  }
+    .icons {
+        gap: 15px;
+        font-size: 20px;
+    }
 }
 
 /* Planşetlər (601px–900px) üçün */
 @media (min-width: 601px) and (max-width: 900px) {
-  .footer_icons {
-    gap: 30px;
-  }
+    .footer_icons {
+        gap: 30px;
+    }
 
-  .phone_number,
-  .icons {
-    font-size: 18px;
-  }
+    .phone_number,
+    .icons {
+        font-size: 18px;
+    }
 }

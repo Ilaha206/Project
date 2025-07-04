@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import "../Registration/Registration.css";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 function Registration() {
   const [formData, setFormData] = useState({
@@ -35,9 +36,7 @@ function Registration() {
       console.error(err);
     }
   };
-  const toggleShowPassword = () => {
-    setShowPassword(prev => !prev);
-  };
+
   return (
     <div className="register">
       <form onSubmit={handleSubmit}>
@@ -54,13 +53,12 @@ function Registration() {
             onChange={handleChange}
             required
           />
-          <button
-            type="button"
-            onClick={toggleShowPassword}
-            className="show-password-btn"
+          <div
+            className="toggle-password"
+            onClick={() => setShowPassword(prev => !prev)}
           >
-            {showPassword ? "Gizlə" : "Göstər"}
-          </button>
+            {showPassword ? <FaRegEye /> : <FaRegEyeSlash />}
+          </div>
         </div>
         <button type="submit">Qeydiyyatdan keç</button>
       </form>

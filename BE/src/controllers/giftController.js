@@ -3,7 +3,7 @@ import { productModel } from "../models/giftModel.js"
 
 export const getAllGifts = async (req, res) => {
     try {
-const gifts = await productModel.find({}).populate("categoryId");
+        const gifts = await productModel.find({}).populate("categoryId");
         res.send(gifts)
     } catch (error) {
         res.send(error.message)
@@ -14,7 +14,7 @@ const gifts = await productModel.find({}).populate("categoryId");
 export const getByIdGifts = async (req, res) => {
     try {
         const { id } = req.params
-const gift = await productModel.findById(id).populate("categoryId");
+        const gift = await productModel.findById(id).populate("categoryId");
         res.send(gift)
     } catch (error) {
         res.send(error.message)

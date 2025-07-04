@@ -11,8 +11,7 @@ function UserPage() {
     <>
       <title>User</title>
       <div className='user_page'>
-        <h3 className='icon_smile'>Burada sizin sevimli məhsullarınız görünəcək. Əgər heç bir məhsul yoxdursa sevimli məhsullarınızı indidən seçməyə başlayın <FaRegSmileBeam /></h3>
-        <div className="cards">{wishlist.map((x) =>
+        {wishlist.length > 0 ? (<div className="cards">{wishlist.map((x) =>
           <div className="card" key={x._id}>
             <img src={x.image} alt="" />
             <h3 className='title'>{x.title}</h3>
@@ -25,10 +24,11 @@ function UserPage() {
             <div className='card_icons'>
               <Link to={`detail/${x._id}`}><div className='info'><FaInfoCircle /></div></Link>
               <div className='heart' onClick={() => handleWishlist(x)}>{checkAtWishlist(x) ? <FaHeart /> : <FaRegHeart />}</div>
-
             </div>
           </div>)}
-        </div>
+        </div>) : (<h3 className='icon_smile'>
+          Heç bir məhsul yoxdur. Sevimli məhsullarınızı indidən seçməyə başlayın! <FaRegSmileBeam />
+        </h3>)}
       </div>
     </>
   )

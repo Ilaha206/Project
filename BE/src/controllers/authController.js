@@ -3,14 +3,14 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import nodemailer from "nodemailer";
 
-const tempCodes = {}; // { "email@example.com": { code: "1234", expires: Date } }
+const tempCodes = {};
 
 // Nodemailer transporter yaradılır (gmail nümunəsi)
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: process.env.EMAIL_USER,     // Sənin gmail ünvanın (.env-də qeyd olunmalıdır)
-    pass: process.env.EMAIL_PASS      // Gmail üçün app password və ya şifrə (.env-də qeyd olunmalıdır)
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
   }
 });
 

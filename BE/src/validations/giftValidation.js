@@ -9,5 +9,5 @@ export const giftValidationSchema = Joi.object({
         instagram: Joi.string().optional()
     }).optional(),
     price: Joi.number().min(1).max(10000).required(),
-    categoryId: Joi.string().required() // ya da Joi.objectId().required()
+    categoryId: Joi.string().required()
 });

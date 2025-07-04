@@ -1,6 +1,6 @@
 import { Router } from "express"
-import { 
-  loginController, 
+import {
+  loginController,
   registerController,
   forgotPasswordController,
   verifyResetCodeController,
@@ -13,7 +13,7 @@ import { loginValidationSchema, registerValidationSchema } from "../validations/
 export const authRouter = Router()
 
 authRouter.post('/login', validate(loginValidationSchema), loginController)
-          .post('/register', validate(registerValidationSchema), registerController)
-          .post('/forgot-password', forgotPasswordController)
-          .post('/verify-reset-code', verifyResetCodeController)
-          .post('/reset-password', resetPasswordController)
+  .post('/register', validate(registerValidationSchema), registerController)
+  .post('/forgot-password', forgotPasswordController)
+  .post('/verify-reset-code', verifyResetCodeController)
+  .post('/reset-password', resetPasswordController)

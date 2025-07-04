@@ -33,3 +33,23 @@
   display: inline-block;
   transition: all 0.3s ease;
 }
+
+@media (max-width: 600px) {
+  .error-container {
+    margin-top: 60px;
+    padding: 0 20px;
+  }
+
+  .error-container h1 {
+    font-size: 72px;
+  }
+
+  .error-container p {
+    font-size: 16px;
+  }
+
+  .button-link {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}

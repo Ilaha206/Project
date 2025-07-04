@@ -7,19 +7,19 @@ const productSchema = new mongoose.Schema({
     contact: {
         phone: {
             type: String,
-            required: false // istəyə bağlıdır
+            required: false
         },
         instagram: {
             type: String,
-            required: false // istəyə bağlıdır
+            required: false
         }
     },
     price: Number,
-categoryId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Category", // əlaqə qurulan model adı
-    required: true
-  }
+    categoryId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Category",
+        required: true
+    }
 });
 
 export const productModel = mongoose.model('Product', productSchema);

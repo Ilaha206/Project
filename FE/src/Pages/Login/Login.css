@@ -86,3 +86,30 @@
   flex-direction: column;
   gap: 10px;
 }
+
+@media (max-width: 480px) {
+  .login-form {
+    width: 90%;
+    padding: 30px 20px;
+  }
+
+  .login-form h4 {
+    font-size: 24px;
+  }
+
+  .login-form input,
+  .forgot-password-form input,
+  .login-form button,
+  .forgot-password-form button {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .toggle-password {
+    font-size: 18px;
+  }
+
+  .forgot-password {
+    font-size: 13px;
+  }
+}

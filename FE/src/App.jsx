@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router";
-import MainRoot from './MainRoot'
+import MainRoot from './MainRoot/MainRoot'
 import Detail from './Pages/Detail/Detail'
 import Home from './Pages/Home/Home'
 import NoPage from './Pages/NoPage/NoPage'
