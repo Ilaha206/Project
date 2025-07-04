@@ -36,7 +36,7 @@ table img {
     width: 20%;
     height: auto;
     border-radius: 8px;
-    
+
 }
 
 button {
@@ -46,13 +46,14 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    
+
 }
 
 button:hover {
     background-color: rgb(83, 136, 137);
 }
-.search{
+
+.search {
     font-size: 20px;
 }
 
@@ -63,18 +64,49 @@ input {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-.sort_button{
-   margin-left: 20px;
+
+.sort_button {
+    margin-left: 20px;
 }
+
 .icon_instagram {
     color: #E4405F;
     display: flex;
     align-items: center;
     gap: 4px;
 }
-.delete{
+
+.delete {
     background-color: rgb(230, 6, 6);
 }
-.update{
+
+.update {
     background-color: rgb(51, 160, 4);
+}
+
+.admin {
+    color: white;
+}
+
+.adminadd {
+    color: white;
+}
+
+.admin_navbar {
+    background-color: rgb(83, 136, 137);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin_options {
+    display: flex;
+    gap: 200px;
+}
+
+.logout {
+    background-color: rgb(83, 136, 137);
+    font-size: 20px;
+    color: white;
 }

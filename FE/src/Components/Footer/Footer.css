@@ -1,24 +1,28 @@
 .footer_section {
     background-color: rgb(2, 33, 94);
     margin-top: 50px;
-    margin-bottom: 0;
     padding: 1rem;
 }
-.contact{
-    height: 100px;
+
+.contact {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+    height: 100px;
+
 }
+
 h2 {
     color: white;
     padding: 5px;
 }
+
 .footer_icons {
+    display: flex;
     gap: 40px;
 }
+
 .phone_number {
     color: white;
     display: flex;
@@ -27,9 +31,17 @@ h2 {
     align-items: center;
     padding: 5px;
 }
-.icons{
+
+.icons {
     display: flex;
     justify-content: center;
     gap: 20px;
     font-size: 20px;
+}
+
+@media (max-width: 600px) {
+    .footer_icons {
+        flex-direction: column;
+        gap: 15px;
+    }
 }

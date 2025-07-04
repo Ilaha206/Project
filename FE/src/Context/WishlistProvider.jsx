@@ -5,13 +5,13 @@ import { createContext, useEffect, useState } from "react"
 export const WishlistContext = createContext()
 function WishlistProvider({ children }) {
     const [wishlist, setwishlist] = useState(() => {
-    const saved = localStorage.getItem("wishlist");
-    return saved ? JSON.parse(saved) : [];
-  });
+        const saved = localStorage.getItem("wishlist");
+        return saved ? JSON.parse(saved) : [];
+    });
 
-  useEffect(() => {
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-  }, [wishlist]);
+    useEffect(() => {
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    }, [wishlist]);
 
 
     function handleWishlist(item) {
@@ -33,6 +33,6 @@ function WishlistProvider({ children }) {
             {children}
         </WishlistContext.Provider>
     )
-}   
+}
 
 export default WishlistProvider

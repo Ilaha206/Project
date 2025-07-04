@@ -51,7 +51,7 @@ function AdminAdd() {
 
         onSubmit={async (values, { setSubmitting }) => {
           const token = localStorage.getItem('token');
-            console.log("Sending POST, token:", token, "values:", values);
+          console.log("Sending POST, token:", token, "values:", values);
 
           try {
             await axios.post('http://localhost:3000/gifts', values, {
@@ -88,14 +88,14 @@ function AdminAdd() {
           <Field name="price" type="text" />
           <ErrorMessage name="price" />
 
-          <label htmlFor="categoryId">Kateqoriya</label>
+          <label htmlFor="categoryId">Category</label>
           <Field as="select" name="categoryId">
-            <option value="">Kateqoriya seçin</option>
-            <option value="6861b1a49a85477b889bd5e5">Çanta</option>
-            <option value="6864610cfac8cad88f5347d5">Oyuncaq</option>
-            <option value="68645bf4fac8cad88f5347ba">Eynək</option>
-            <option value="68646605fac8cad88f5347e6">Aksesuar</option>
-            <option value="68646892fac8cad88f5347f3">Buket</option>
+            <option value="">Choose category</option>
+            <option value="6861b1a49a85477b889bd5e5">Bag</option>
+            <option value="6864610cfac8cad88f5347d5">Toy</option>
+            <option value="68645bf4fac8cad88f5347ba">Sunglasses</option>
+            <option value="68646605fac8cad88f5347e6">Accessory</option>
+            <option value="68646892fac8cad88f5347f3">Bouquet</option>
           </Field>
           <ErrorMessage name="categoryId" component="div" className="error" />
 

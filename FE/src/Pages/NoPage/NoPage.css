@@ -2,7 +2,7 @@
   text-align: center;
   margin-top: 100px;
   font-family: sans-serif;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .error-container h1 {
@@ -22,6 +22,7 @@
   padding: 10px 20px;
   border-radius: 5px;
 }
+
 .button-link {
   text-decoration: none;
   color: white;

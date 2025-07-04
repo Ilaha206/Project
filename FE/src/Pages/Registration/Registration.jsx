@@ -8,7 +8,7 @@ function Registration() {
     email: "",
     password: ""
   });
-
+  const [showPassword, setShowPassword] = useState(false);
   const handleChange = (e) => {
     setFormData(prev => ({
       ...prev,
@@ -18,15 +18,15 @@ function Registration() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
- if (formData.username.length < 3 || formData.username.length > 30) {
-    alert("İstifadəçi adı 3-30 simvol arası olmalıdır.");
-    return;
-  }
+    if (formData.username.length < 3 || formData.username.length > 30) {
+      alert("İstifadəçi adı 3-30 simvol arası olmalıdır.");
+      return;
+    }
 
-  if (formData.password.length < 6) {
-    alert("Şifrə ən azı 6 simvoldan ibarət olmalıdır.");
-    return;
-  }
+    if (formData.password.length < 6) {
+      alert("Şifrə ən azı 6 simvoldan ibarət olmalıdır.");
+      return;
+    }
     try {
       await axios.post("http://localhost:3000/register", formData);
       alert("Qeydiyyat uğurla tamamlandı!");
@@ -35,15 +35,33 @@ function Registration() {
       console.error(err);
     }
   };
-
+  const toggleShowPassword = () => {
+    setShowPassword(prev => !prev);
+  };
   return (
     <div className="register">
       <form onSubmit={handleSubmit}>
         <h4>Qeydiyyat</h4>
-        <input type="text" name="username" placeholder="İstifadəçi adı" value={formData.username} onChange={handleChange} required/>
+        <input type="text" name="username" placeholder="İstifadəçi adı" value={formData.username} onChange={handleChange} required />
         <input
-          type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required/>
-        <input type="password" name="password" placeholder="Şifrə" value={formData.password} onChange={handleChange} required/>
+          type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+        <div className="password-wrapper">
+          <input
+            type={showPassword ? "text" : "password"}
+            name="password"
+            placeholder="Şifrə"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <button
+            type="button"
+            onClick={toggleShowPassword}
+            className="show-password-btn"
+          >
+            {showPassword ? "Gizlə" : "Göstər"}
+          </button>
+        </div>
         <button type="submit">Qeydiyyatdan keç</button>
       </form>
     </div>

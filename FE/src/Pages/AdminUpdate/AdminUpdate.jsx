@@ -6,9 +6,9 @@ import { useEffect, useState } from 'react';
 function AdminUpdate() {
   const { id } = useParams();
   const navigate = useNavigate()
-    const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState(null);
 
-    useEffect(() => {
+  useEffect(() => {
     axios.get(`http://localhost:3000/gifts/${id}`)
       .then(res => setProduct(res.data))
       .catch(err => {
@@ -28,7 +28,7 @@ function AdminUpdate() {
           price: product.price,
           categoryId: product.categoryId,
           contact: {
-            phone:  product.contact?.phone,
+            phone: product.contact?.phone,
             instagram: product.contact?.instagram
           }
         }}
@@ -72,7 +72,7 @@ function AdminUpdate() {
                 'Content-Type': 'application/json'
               }
             });
-            
+
             alert('Məhsul uğurla yeniləndi!');
             navigate('/admin');
           } catch (err) {
@@ -122,8 +122,8 @@ function AdminUpdate() {
 
           <button type="submit">Submit</button>
         </Form>
-      </Formik> }
-      
+      </Formik>}
+
     </>
   )
 }

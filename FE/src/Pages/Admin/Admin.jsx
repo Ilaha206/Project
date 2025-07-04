@@ -19,31 +19,31 @@ function Admin() {
   }, [])
 
   function deleteByItem(id) {
-     const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
 
-    
-  fetch("http://localhost:3000/gifts/" + id, {
-    method: "DELETE",
-    headers: {
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(res => {
-    if (!res.ok) {
-      throw new Error('Delete əməliyyatı uğursuz oldu');
-    }
-    return res.text();
-  })
-  .then(() => {
-    return fetch("http://localhost:3000/gifts")
-  })
-  .then(res => res.json())
-  .then(data => setproducts(data))
-  .catch(err => {
-    console.error(err);
-    alert('Silərkən xəta baş verdi!');
-  });
+
+    fetch("http://localhost:3000/gifts/" + id, {
+      method: "DELETE",
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Delete əməliyyatı uğursuz oldu');
+        }
+        return res.text();
+      })
+      .then(() => {
+        return fetch("http://localhost:3000/gifts")
+      })
+      .then(res => res.json())
+      .then(data => setproducts(data))
+      .catch(err => {
+        console.error(err);
+        alert('Silərkən xəta baş verdi!');
+      });
   }
   return (
     <>
@@ -82,7 +82,7 @@ function Admin() {
                   <td className="icon_instagram"><IoLogoInstagram />: {x.contact.instagram}</td>
                 )}
                 <td><button className="delete" onClick={() => deleteByItem(x._id)}>Delete</button></td>
-                <td><button className="update" onClick={()=>navigate("update/"+x._id)}>Update</button></td>
+                <td><button className="update" onClick={() => navigate("update/" + x._id)}>Update</button></td>
               </tr>
             </tbody>)}
       </table>

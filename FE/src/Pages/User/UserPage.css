@@ -1,9 +1,10 @@
-.icon_smile{
+.icon_smile {
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
-.user_page{
+
+.user_page {
     height: 100vh;
 }

@@ -1,26 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import './Home.css';
-import { Link, useNavigate } from "react-router"; // <-- düzəliş BURADA
+import { Link } from "react-router";
 import { FaHeart, FaInfoCircle, FaRegHeart } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io5";
 import { WishlistContext } from "../../Context/WishlistProvider";
-import UseAuth from '../../Hooks/UseAuth';
+import { OrbitProgress } from 'react-loading-indicators'
+import Hero from "../../Components/Hero/Hero";
 
 function Home() {
   const [products, setproducts] = useState([]);
   const { handleWishlist, checkAtWishlist } = useContext(WishlistContext);
   const [loading, setLoading] = useState(true);
-  const { isLoggedIn } = UseAuth(); // <-- BURADA istifadə olunur
-  const navigate = useNavigate();   // <-- BURADA əlavə olundu
-
-  // Sevimli düyməsinə klik zamanı login yoxlaması
-  const handleClickWishlist = (item) => {
-    if (!isLoggedIn) {
-      navigate('/register'); // <-- qeydiyyat səhifəsinə yönləndir
-    } else {
-      handleWishlist(item);  // <-- login olubsa sevimlilərə əlavə et
-    }
-  };
 
   useEffect(() => {
     fetch("http://localhost:3000/gifts")
@@ -34,14 +24,14 @@ function Home() {
   return (
     <>
       <title>Home</title>
-
+      <Hero />
       <div className="products_cards">
         <div className="products">
           <h3>Məhsullar</h3>
         </div>
 
         {loading ? (
-          <div className="loading">Yüklənir...</div>
+          <div className="loading"><OrbitProgress variant="dotted" color="#a0a1a0" size="medium" text="" textColor="" /></div>
         ) : (
           <div className="cards">
             {products.map((x) => (
@@ -60,8 +50,8 @@ function Home() {
                     <Link to={`detail/${x._id}`}>
                       <div className="info"><FaInfoCircle /></div>
                     </Link>
-                    {/* BURADA dəyişiklik */}
-                    <div className="heart" onClick={() => handleClickWishlist(x)}>
+
+                    <div className="heart" onClick={() => handleWishlist(x)}>
                       {checkAtWishlist(x) ? <FaHeart /> : <FaRegHeart />}
                     </div>
                   </div>
