@@ -110,3 +110,88 @@ input {
     font-size: 20px;
     color: white;
 }
+
+/* Mobil ekranlar (max 600px) üçün */
+@media (max-width: 600px) {
+    .admin_navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 0;
+    }
+
+    .admin_options {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .admin_options li {
+        font-size: 16px;
+    }
+
+    .search {
+        display: block;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    input {
+        width: 90%;
+        margin: 0 auto 15px;
+        display: block;
+    }
+
+    .sort_button {
+        display: block;
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        font-size: 12px;
+    }
+
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        white-space: nowrap;
+    }
+
+    table img {
+        width: 60px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    .icon_instagram {
+        flex-direction: row;
+        font-size: 12px;
+    }
+}
+
+/* Planşetlər üçün (601px - 900px) */
+@media (min-width: 601px) and (max-width: 900px) {
+    .admin_options {
+        gap: 60px;
+    }
+
+    input {
+        width: 70%;
+    }
+
+    .sort_button {
+        margin: 10px 10px 0 0;
+    }
+
+    table img {
+        width: 80px;
+    }
+}
