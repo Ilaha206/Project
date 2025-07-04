@@ -3,11 +3,14 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import WishlistProvider from './Context/WishlistProvider.jsx'
+import UserContextProvider from './Context/UserContextProvider.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-<WishlistProvider>
-      <App />
-</WishlistProvider>
+    <UserContextProvider>
+      <WishlistProvider>
+        <App />
+      </WishlistProvider>
+    </UserContextProvider>
   </StrictMode>,
 )

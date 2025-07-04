@@ -1,11 +1,11 @@
 import { createContext, useState } from "react"
 
-const userContext = createContext()
+export const UserContext = createContext()
 function UserContextProvider({children}) {
 const [token, settoken] = useState(null)
 const [decode, setdecode] = useState(null)
   return (
-    <UserContextProvider value={{token,settoken,decode,setdecode}}>{children}</UserContextProvider>
+    <UserContext.Provider value={{token,settoken,decode,setdecode}}>{children}</UserContext.Provider>
   )
 }
 
